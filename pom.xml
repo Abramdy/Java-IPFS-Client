@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.rhaz.ipfs</groupId>
+  <artifactId>daemon</artifactId>
+  <version>1.0</version>
+  <name>IPFS-Daemon-Java</name>
+  
+  <repositories>
+  <repository>
+	        <id>bungeecord-repo</id>
+	        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	    </repository>
+	    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+	</repositories>
+	
+	<build>
+	    <resources>
+		<resource>
+		<directory>src/main/resources</directory>
+		<filtering>false</filtering>
+		<includes>
+		<include>*</include>
+		</includes>
+		</resource>
+		</resources>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <version>3.1</version>
+	            <configuration>
+	                <source>1.7</source>
+	                <target>1.7</target>
+	            </configuration>
+	        </plugin>
+	        <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-shade-plugin</artifactId>
+			    <version>1.5</version>
+			    <executions>
+			        <execution>
+			            <phase>package</phase>
+			            <goals>
+			                <goal>shade</goal>
+			            </goals>
+			            <configuration>
+                            <minimizeJar>false</minimizeJar>
+                            <relocations>
+                            </relocations>
+                            <filters>
+						        <filter>
+						            <artifact>*:*</artifact>
+						            <excludes>
+						                <exclude>META-INF/*.SF</exclude>
+						                <exclude>META-INF/*.DSA</exclude>
+						                <exclude>META-INF/*.RSA</exclude>
+						            </excludes>
+						        </filter>
+						    </filters>
+						    <transformers>
+				                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+				                  <manifestEntries>
+				                    <Main-Class>${project.groupId}.${project.artifactId}.Core</Main-Class>
+				                    <Built-By>Hazae41</Built-By>
+				                    <SplashScreen-Image>splash.png</SplashScreen-Image>
+				                  </manifestEntries>
+				                </transformer>
+				              </transformers>
+                        </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+			<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-resources-plugin</artifactId>
+  <version>3.0.1</version>
+  <executions>
+    <execution>
+      <id>readme-md</id>
+      <phase>process-resources</phase>
+      <goals>
+        <goal>copy-resources</goal>
+      </goals>
+      <configuration>
+        <outputDirectory>${project.basedir}</outputDirectory>
+        <resources>                                        
+          <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+              <include>README.md</include>
+            </includes>
+            <filtering>true</filtering>
+          </resource>
+        </resources>
+        <encoding>UTF-8</encoding>
+      </configuration>            
+    </execution>
+  </executions>
+</plugin>
+	    </plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+	    <groupId>com.github.ipfs</groupId>
+	    <artifactId>java-ipfs-api</artifactId>
+	    <version>v1.2.0</version>
+	    <scope>compile</scope>
+	</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.7</version>
+    <scope>compile</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.6</version>
+    <scope>compile</scope>
+</dependency>
+
+
+	</dependencies>
+</project>
