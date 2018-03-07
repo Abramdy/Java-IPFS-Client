@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.rhaz.ipfs</groupId>
-  <artifactId>daemon</artifactId>
+  <artifactId>client</artifactId>
   <version>1.0</version>
-  <name>IPFS-Daemon-Java</name>
+  <name>Java-IPFS-Client</name>
   
   <repositories>
   <repository>
@@ -14,7 +14,7 @@
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
     </repository>
-	</repositories>
+	</repositories> 
 	
 	<build>
 	    <resources>
@@ -63,7 +63,7 @@
 						    <transformers>
 				                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 				                  <manifestEntries>
-				                    <Main-Class>${project.groupId}.${project.artifactId}.Core</Main-Class>
+				                    <Main-Class>${project.groupId}.${project.artifactId}.Client</Main-Class>
 				                    <Built-By>Hazae41</Built-By>
 				                    <SplashScreen-Image>splash.png</SplashScreen-Image>
 				                  </manifestEntries>
@@ -102,29 +102,14 @@
 </plugin>
 	    </plugins>
 	</build>
-	
 	<dependencies>
-		<dependency>
-	    <groupId>com.github.ipfs</groupId>
-	    <artifactId>java-ipfs-api</artifactId>
-	    <version>v1.2.0</version>
-	    <scope>compile</scope>
+	
+	<dependency>
+		<groupId>fr.rhaz.ipfs</groupId>
+		<artifactId>daemon</artifactId>
+		<version>1.0</version>
+		<scope>compile</scope>
 	</dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.7</version>
-    <scope>compile</scope>
-</dependency>
-<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.6</version>
-    <scope>compile</scope>
-</dependency>
-
 
 	</dependencies>
 </project>
