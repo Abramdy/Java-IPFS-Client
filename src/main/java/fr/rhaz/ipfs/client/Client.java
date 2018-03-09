@@ -37,13 +37,12 @@ public class Client {
 					window.lblIpfsIsRunning.setText("IPFS is starting...");
 				if(e.getType().equals(DaemonEventType.ATTACHED)) {
 					window.lblIpfsIsRunning.setText("IPFS is running");
-					window.lblYouCanClose.setText("You can close this window");
+					window.lblYouCanClose.setText("Right click to do something");
 				}
 			}
 		});
 		
 		daemon.run(() -> init());
-		
 	}
 	
 	public static void init() {

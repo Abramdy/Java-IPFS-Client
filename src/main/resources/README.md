@@ -1,3 +1,4 @@
 # ${project.name} v${project.version}
 
-Work In Progress
+Standalone IPFS client written in Java
+
