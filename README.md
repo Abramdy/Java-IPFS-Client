@@ -23,3 +23,10 @@ Just download the .exe and run it
 Download the .jar and run it
 
 If it does not work create a script with the command "java -jar <filename>.jar" and run it
+
+### Support this project
+
+
+You can support this project by upvoting it on Steem
+
+https://steemit.com/ipfs/@hazae41/java-ipfs-client-a-software-to-upload-files-folders-to-ipfs
