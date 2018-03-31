@@ -12,11 +12,18 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,6 +33,7 @@ import javax.swing.SwingConstants;
 
 import io.ipfs.api.MerkleNode;
 import io.ipfs.api.NamedStreamable;
+import io.ipfs.multihash.Multihash;
 
 import java.awt.Font;
 import javax.swing.JToggleButton;
@@ -53,7 +61,7 @@ public class Window extends JFrame{
 	private static final long serialVersionUID = -2188421821266426888L;
 	public static Window window;
 	private static TrayIcon icon;
-	private static ImageIcon logo;
+	public static ImageIcon logo;
 	private static String name = "IPFS";
 	private final Action action = new SwingAction();
 	public JLabel lblIpfsIsRunning;
@@ -62,6 +70,7 @@ public class Window extends JFrame{
 	private final Action action_1 = new SwingAction_1();
 	private final Action action_2 = new SwingAction_2();
 	private final Action action_3 = new SwingAction_3();
+	private final Action action_4 = new SwingAction_4();
 
 	public Window(){
 		window = this;
@@ -113,6 +122,10 @@ public class Window extends JFrame{
 		JMenuItem mntmAddFolder = new JMenuItem("Add folder...");
 		mntmAddFolder.setAction(action_3);
 		popupMenu.add(mntmAddFolder);
+		
+		JMenuItem mntmOpen = new JMenuItem("Open...");
+		mntmOpen.setAction(action_4);
+		popupMenu.add(mntmOpen);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setAction(action_1);
@@ -240,6 +253,81 @@ public class Window extends JFrame{
 				        JOptionPane.ERROR_MESSAGE);
 				e1.printStackTrace();
 			}
+		}
+	}
+	private class SwingAction_4 extends AbstractAction {
+		public SwingAction_4() {
+			putValue(NAME, "Open...");
+			putValue(SHORT_DESCRIPTION, "Open an IPFS's file or folder");
+		}
+		
+		// @SuppressWarnings("unchecked")
+		public void actionPerformed(ActionEvent e) {
+			
+			
+			String b58 = JOptionPane.showInputDialog(window, "Hash");
+			if(b58 == null) return;
+			if(b58.startsWith("/ipfs/")) b58 = b58.substring("/ipfs/".length(), b58.length());
+			if(b58.startsWith("ipfs:")) b58 = b58.substring("ipfs:".length(), b58.length());
+			if(b58.startsWith("ipfs://")) b58 = b58.substring("ipfs://".length(), b58.length());
+			
+			try {
+				Client.openWebpage(new URI("http://ipfs.io/ipfs/"+b58));
+			} catch (URISyntaxException e1) {}
+			
+			/*
+			
+			try {
+				
+				Map<String, Object> map = Client.daemon.getIPFS().file.ls(hash);
+
+				System.out.println(map);
+				
+				Map<String, Object> objects = (Map<String, Object>) map.get("Objects");
+				
+				Map<String, Object> first = (Map<String, Object>) new ArrayList<>(objects.values()).get(0);
+				
+				List<MerkleNode> nodes = new ArrayList<>();
+				
+				links:{
+					if(first.get("Links") == null)
+						break links;
+					
+					List<Object> links = (List<Object>) first.get("Links");
+					
+					for(Object link:links) {
+						Map<String, Object> v = (Map<String, Object>) link;
+						MerkleNode node = new MerkleNode((String) v.get("Hash"), 
+							Optional.ofNullable((String) v.get("Name")), 
+							Optional.ofNullable((Integer) v.get("Size")), 
+							Optional.ofNullable((String) v.get("LargeSize")), 
+							Optional.ofNullable((Integer) NodeType.valueOf(((String) v.get("Type")).toUpperCase()).ordinal()), 
+							(List<MerkleNode>) v.get("Links"), 
+							Optional.ofNullable((byte[]) v.get("Data"))
+						);
+						nodes.add(node);
+					}
+				}
+				
+				nolinks:{
+					if(nodes.size() != 0) break nolinks;
+					MerkleNode node = new MerkleNode(
+							(String) first.get("Hash"), 
+							Optional.ofNullable((String) first.get("Name")), 
+							Optional.ofNullable((Integer) first.get("Size")), 
+							Optional.ofNullable((String) first.get("LargeSize")), 
+							Optional.ofNullable((Integer) NodeType.valueOf(((String) first.get("Type")).toUpperCase()).ordinal()), 
+							new ArrayList<MerkleNode>(), 
+							Optional.ofNullable((byte[]) first.get("Data"))
+					);
+					nodes.add(node);
+				}
+
+				new Explorer(nodes);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}*/
 		}
 	}
 }

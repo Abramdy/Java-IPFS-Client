@@ -1,11 +1,15 @@
 package fr.rhaz.ipfs.client;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 
 import fr.rhaz.events.EventRunnable;
 import fr.rhaz.ipfs.daemon.Daemon;
 import fr.rhaz.ipfs.daemon.DaemonEvent;
 import fr.rhaz.ipfs.daemon.DaemonEvent.DaemonEventType;
+import io.ipfs.api.IPFS;
+import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
 
 public class Client {
 	public static Daemon daemon;
@@ -43,6 +47,7 @@ public class Client {
 		});
 		
 		daemon.run(() -> init());
+		
 	}
 	
 	public static void init() {
@@ -53,5 +58,18 @@ public class Client {
 		}
 		daemon.start();
 		daemon.attach();
+	}
+	
+	public static boolean openWebpage(URI uri) {
+	    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+	    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+	        try {
+	            desktop.browse(uri);
+	            return true;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return false;
 	}
 }
