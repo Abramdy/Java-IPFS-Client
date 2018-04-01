@@ -6,7 +6,9 @@
 
 ### Screenshots
 
+![](https://image.prntscr.com/image/JlyXUdqnR-uI9EJr1xoqbQ.png)
 ![](https://image.prntscr.com/image/Om_T-wFVQKOR7e5ODTFWEg.png)
+![](https://image.prntscr.com/image/XcEqSh0gQmuENSLBOpo7Kw.png)
 
 ![](https://ipfs.io/ipfs/QmPWy2LoZcY5X6neM5gGv7TF8un86GF82XVJL1EDfScrjt)
 
