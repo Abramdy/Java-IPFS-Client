@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.rhaz.ipfs</groupId>
   <artifactId>client</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <name>Java-IPFS-Client</name>
   
   <repositories>
@@ -107,8 +107,7 @@
 	<dependency>
 		<groupId>fr.rhaz.ipfs</groupId>
 		<artifactId>daemon</artifactId>
-		<version>1.0</version>
-		<scope>compile</scope>
+		<version>1.1</version>
 	</dependency>
 
 	</dependencies>

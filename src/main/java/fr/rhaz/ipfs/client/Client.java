@@ -8,8 +8,6 @@ import fr.rhaz.events.EventRunnable;
 import fr.rhaz.ipfs.daemon.Daemon;
 import fr.rhaz.ipfs.daemon.DaemonEvent;
 import fr.rhaz.ipfs.daemon.DaemonEvent.DaemonEventType;
-import io.ipfs.api.IPFS;
-import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
 
 public class Client {
 	public static Daemon daemon;

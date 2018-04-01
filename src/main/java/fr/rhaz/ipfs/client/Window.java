@@ -1,54 +1,32 @@
 package fr.rhaz.ipfs.client;
 
 import java.awt.AWTException;
-import java.awt.Dimension;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 
 import io.ipfs.api.MerkleNode;
 import io.ipfs.api.NamedStreamable;
-import io.ipfs.multihash.Multihash;
-
 import java.awt.Font;
-import javax.swing.JToggleButton;
-import javax.swing.BoxLayout;
-import javax.swing.JSeparator;
-import java.awt.GridLayout;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import java.awt.Color;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import javax.swing.JTree;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
@@ -152,6 +130,10 @@ public class Window extends JFrame{
 		this.setVisible(true);
 	}
 	private class SwingAction extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -707983890931613130L;
 		public SwingAction() {
 			putValue(NAME, "Toggle");
 			putValue(SHORT_DESCRIPTION, "Toggle the IPFS daemon");
@@ -183,6 +165,10 @@ public class Window extends JFrame{
 		});
 	}
 	private class SwingAction_1 extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 7591859936105170123L;
 		public SwingAction_1() {
 			putValue(NAME, "Exit");
 			putValue(SHORT_DESCRIPTION, "Exit");
@@ -194,6 +180,10 @@ public class Window extends JFrame{
 		}
 	}
 	private class SwingAction_2 extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 8976985404306992904L;
 		public SwingAction_2() {
 			putValue(NAME, "Add file...");
 			putValue(SHORT_DESCRIPTION, "Add file to IPFS");
@@ -224,6 +214,10 @@ public class Window extends JFrame{
 		}
 	}
 	private class SwingAction_3 extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 3183557459970652928L;
 		public SwingAction_3() {
 			putValue(NAME, "Add folder...");
 			putValue(SHORT_DESCRIPTION, "Add folder to IPFS");
@@ -256,6 +250,11 @@ public class Window extends JFrame{
 		}
 	}
 	private class SwingAction_4 extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -6920903793356480462L;
+
 		public SwingAction_4() {
 			putValue(NAME, "Open...");
 			putValue(SHORT_DESCRIPTION, "Open an IPFS's file or folder");
