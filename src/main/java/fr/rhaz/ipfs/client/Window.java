@@ -112,12 +112,12 @@ public class Window extends JFrame{
 		lblIpfsIsRunning = new JLabel("IPFS is starting...");
 		
 		lblIpfsIsRunning.setBounds(0, 13, 282, 33);
-		lblIpfsIsRunning.setFont(new Font("Lucida Sans Unicode", Font.BOLD, 13));
+		lblIpfsIsRunning.setFont(new Font("Lucida Sans Unicode", Font.BOLD, 15));
 		lblIpfsIsRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblIpfsIsRunning);
 		
 		tglbtnNewToggleButton = new JButton("Toggle");
-		tglbtnNewToggleButton.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 13));
+		tglbtnNewToggleButton.setFont(new Font("Lucida Sans", Font.PLAIN, 13));
 		tglbtnNewToggleButton.setAction(action);
 		tglbtnNewToggleButton.setBounds(41, 72, 200, 31);
 		getContentPane().add(tglbtnNewToggleButton);
