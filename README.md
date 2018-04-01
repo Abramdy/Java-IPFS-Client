@@ -1,4 +1,4 @@
-# Java-IPFS-Client v1.0.1
+# Java-IPFS-Client v1.1.1
 
 ![](https://ipfs.io/ipfs/QmViPMRbH2JkUrCFYQEQKXrtoztqFHsJpsKXFmXeYxR2cr)
 
